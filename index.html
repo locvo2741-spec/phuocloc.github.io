@@ -1,0 +1,56 @@
+<script>
+function chuanHoaTen(str){
+    return str
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g,' ');
+}
+
+function duDoan(){
+
+    let ten = document.getElementById("name").value;
+    let t = chuanHoaTen(ten);
+
+    document.getElementById("result").innerHTML = "";
+    document.getElementById("loading").style.display = "block";
+
+    let fill = document.getElementById("fill");
+    fill.style.width = "0%";
+
+    let p = 0;
+
+    let load = setInterval(function(){
+
+        p++;
+        fill.style.width = p + "%";
+
+        if(p >= 100){
+
+            clearInterval(load);
+
+            document.getElementById("loading").style.display = "none";
+
+            let ketqua = "";
+
+            if(t === "bảo duy"){
+                ketqua = "💖 Vợ bạn là: Phan Lê Hồng Phúc";
+            }
+            else if(t === "huỳnh anh kiệt"){
+                ketqua = "💖 Vợ bạn là: Cẩm Hường";
+            }
+            else if(t === "nguyễn thiện phước"){
+                ketqua = "💖 Vợ bạn là: Bảo Ngọc";
+            }
+            else if(t === "nguyễn quốc toàn"){
+                ketqua = "💖 Vợ bạn là: Lê Thu Hà";
+            }
+            else{
+                ketqua = "❓ Hệ thống chưa tìm thấy dữ liệu.";
+            }
+
+            document.getElementById("result").innerHTML = ketqua;
+        }
+
+    },20);
+}
+</script>
